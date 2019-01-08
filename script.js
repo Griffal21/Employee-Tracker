@@ -8,19 +8,24 @@ var config = {
   messagingSenderId: "964588687299"
 };
 firebase.initializeApp(config);
+
 // save firebase database reference
 db = firebase.database();
+
+
 // add event listener for form submit
 $("#submit-btn").on("click", function (event) {
   event.preventDefault();
+
   var employeeData = {
     name: $("#name-input").val().trim(),
     role: $("#role-input").val().trim(),
     startDate: $("#start-input").val(),
     rate: parseInt($("#rate-input").val())
   };
-  db.ref().push({
-    employeeData: employeeData
-  });
+
+  db.ref().push(employeeData);
+
   console.log(employeeData);
+
 });
